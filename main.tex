@@ -1,0 +1,131 @@
+\documentclass[12pt,letterpaper]{report}
+\usepackage{natbib}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\usepackage{graphicx}
+\usepackage{mathptmx} % http://ctan.org/pkg/mathptmx
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{dcolumn,array}
+\usepackage{tocloft}
+\usepackage{bilgi}
+
+
+
+\begin{document}
+%----------------------------------------------------------------------------------------
+% TITLE SETTINGS
+%----------------------------------------------------------------------------------------
+\pagenumbering{roman}
+\title{TITLE OF THE PROJECT} % USE CAPITAL LETTERS
+\author{Your name}
+\supervisor{Title and Name of Supervisor}
+\department{Your Department}
+\gradyear{2015}
+
+%----------------------------------------------------------------------------------------
+% TITLE
+%----------------------------------------------------------------------------------------
+\maketitle
+\clearpage % Start a new page
+
+%----------------------------------------------------------------------------------------
+% TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\setcounter{page}{1}
+\tableofcontents
+% This puts the word "Page" right justified above everything else.
+\addtocontents{toc}{~\hfill \par}
+\clearpage % Start a new page
+%----------------------------------------------------------------------------------------
+% LIST OF FIGURES
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+
+\addcontentsline{toc}{part}{LIST OF FIGURES}
+\renewcommand{\cftlabel}{Figure}
+\listoffigures
+\addtocontents{lof}{\hfill \par}
+\clearpage % Start a new page
+
+%----------------------------------------------------------------------------------------
+% LIST OF TABLES
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+
+
+\addcontentsline{toc}{part}{LIST OF TABLES}
+\renewcommand{\cftlabel}{Table}
+\listoftables
+\addtocontents{lot}{\hfill \par}
+
+%----------------------------------------------------------------------------------------
+% LIST OF SYMBOLS AND ABBREVIATIONS
+%----------------------------------------------------------------------------------------
+\newgeometry{top=110.0truept}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\addcontentsline{toc}{part}{LIST OF SYMBOLS AND ABBREVIATIONS}
+\listofsymbols{ll} % Include a list of Abbreviations (a table of two columns)
+{
+K$_{d}$ & Dissociation Constant \\
+$\lambda$ & Lambda   \\[0.5cm]
+ELISA & \textbf{E}nzyme-\textbf{L}inked \textbf{I}mmuno\textbf{s}orbent \textbf{A}ssay \\
+\textit{E.coli} & \textit{\textbf{E}scherichia \textbf{coli}} \\
+ORF   & \textbf{O}pen \textbf{R}eading \textbf{F}rame \\
+DTT   & \textbf{D}ithio\textbf{t}hrei\textbf{t}ol
+}
+
+%----------------------------------------------------------------------------------------
+% ABSTRACT
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\begin{abstract}
+
+\end{abstract}
+
+
+%----------------------------------------------------------------------------------------
+% CHAPTERS
+%----------------------------------------------------------------------------------------
+\pagenumbering{arabic}
+
+\include{Chapters/Chapter1}
+\include{Chapters/Chapter2}
+\include{Chapters/Chapter3}
+%\include{Chapters/Chapter1}
+%\include{Chapters/Chapter1}
+%\include{Chapters/Chapter1}
+
+%----------------------------------------------------------------------------------------
+% APPENDIX
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\addcontentsline{toc}{part}{APPENDIX A: RAW DATA}
+\include{Appendices/Appendix1}
+
+%----------------------------------------------------------------------------------------
+% REFERENCES
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+{\singlespace
+\addcontentsline{toc}{part}{REFERENCES}
+\bibliographystyle{unsrtnat}
+\bibliography{References}}
+
+
+\end{document}

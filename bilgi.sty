@@ -1,0 +1,231 @@
+% Istanbul Bilgi University
+% BIOE491/492 Senior Design Project Template
+% 
+% Adapted from John Shumway asudis.sty
+% https://github.com/shumway/asudis
+%
+% Dogancan Ozturan (dogancan.org)
+% Date: June 2015
+% repo: github.com/ozturan/bilgithesis
+%
+\geometry{top=1.0in,hmargin=1.25in,height=9.0in,includefoot,
+letterpaper}
+
+\newcommand{\doublespace} {
+  \renewcommand{\baselinestretch}{1.66}\small\normalsize
+}
+\newcommand{\oneandhalfspace} {
+  \renewcommand{\baselinestretch}{1.24}\small\normalsize
+}
+\newcommand{\singlespace} {
+  \renewcommand{\baselinestretch}{0.9}\small\normalsize
+}
+\singlespace
+
+\title{\tt$\backslash$\string title}
+\author{\tt$\backslash$\string author}
+\newcommand{\supervisor}[1]{\renewcommand{\@supervisor}{#1}}
+\newcommand{\@supervisor}{\tt$\backslash$\string supervisor}
+\newcommand{\department}[1]{\renewcommand{\@department}{#1}}
+\newcommand{\@department}{\tt$\backslash$\string department}
+\newcommand{\gradyear}[1]{\renewcommand{\@gradyear}{#1}}
+\newcommand{\@gradyear}{\tt$\backslash$\string gradyear}
+
+\renewcommand\maketitle{
+  \enlargethispage{0.5in}
+  \thispagestyle{empty}
+  \noindent
+  \begin{minipage}[t][647.0truept][t]{\linewidth}
+  \begin{center}
+  \includegraphics[scale=0.7]{Figures/bilgilogo.png} \\[1cm]
+    \textbf{\@title} \\
+  \vspace{4cm}
+   \textbf{   by\\
+    \@author}
+     \vspace{0.5cm}
+  \begin{center}
+    \singlespace
+    \textbf{Supervised \\
+    By \\
+    \@supervisor}
+  \end{center}
+  \vspace{10cm}
+  \textbf{ \@department\\
+   Istanbul Bilgi University \\
+   \@gradyear}
+   \end{center} 
+\end{minipage}
+\clearpage
+}
+
+% abstract
+%
+\renewenvironment{abstract}{
+  \begin{center}
+    \doublespace
+    ABSTRACT
+  \end{center}
+} {
+  \clearpage
+}
+
+%
+% acknowledgements
+%
+\newenvironment{acknowledgements}{
+  \begin{center}
+    \doublespace
+    ACKNOWLEDGEMENTS
+  \end{center}
+} {
+  \clearpage
+}
+
+\renewcommand\cftsecfont{\normalfont}
+\renewcommand\cftsecpagefont{\normalfont}
+
+
+\renewcommand{\cftchapdotsep}{1.7}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
+\renewcommand{\cftpartdotsep}{1.7}
+\renewcommand{\cftpartleader}{\cftdotfill{\cftpartdotsep}}
+\renewcommand{\cftsecdotsep}{1.7}
+\renewcommand{\cftsubsecdotsep}{1.7}
+\renewcommand{\cfttabdotsep}{1.7}
+\renewcommand{\cftfigdotsep}{1.7}
+%
+% Fonts for the chapter titles and part titles.
+%
+\renewcommand{\cftchapfont}{\uppercase \rm}
+\renewcommand{\cftpartfont}{\rm}
+\renewcommand{\cftchappagefont}{\rm}
+\renewcommand{\cftpartpagefont}{\rm}
+\setlength{\cftbeforepartskip}{0truept}
+\setlength{\cftbeforechapskip}{0truept}
+%
+% Get the title for the TOC normal sized, centered, and at the right height.
+%
+\setlength{\cftbeforetoctitleskip}{-30.0truept}
+\setlength{\cftaftertoctitleskip}{0truept}
+%
+\renewcommand{\contentsname}{TABLE OF CONTENTS}
+\renewcommand{\cfttoctitlefont}{\hfill\normalsize\rm}
+\renewcommand{\cftaftertoctitle}{\hfill}
+%
+\newcommand{\cftlabel}{CHAPTER}
+%
+% Get rid of the header underline.
+\renewcommand{\headrulewidth}{0pt}
+%
+% Get the header on subsequent pages right.
+\renewcommand{\@cfttocstart}{ 
+   \newgeometry{top=1.0in,hmargin=1.25in,height=9.0in,
+   includehead,includefoot,letterpaper}%,showcrop,showframe}
+
+   \doublespace
+  \pagestyle{fancyplain}
+   \afterpage{\lhead{\cftlabel}\rhead{\thepage}}
+}
+
+\renewcommand{\@cfttocfinish}{
+   \restoregeometry\clearpage\afterpage{\lhead{}\rhead{}}
+}
+%
+% Get the title for the LOT normal sized, centered, and at the right height.
+%
+\setlength{\cftbeforelottitleskip}{-30.0truept}
+\setlength{\cftafterlottitleskip}{0truept}
+%
+\renewcommand{\listtablename}{LIST OF TABLES}
+\renewcommand{\cftlottitlefont}{\hfill\normalsize\rm}
+\renewcommand{\cftafterlottitle}{\hfill}
+% 
+% Get the title for the LOF normal sized, centered, and at the right height.
+%
+\setlength{\cftbeforeloftitleskip}{-30.0truept}
+\setlength{\cftafterloftitleskip}{0truept}
+%
+\renewcommand{\listfigurename}{LIST OF FIGURES}
+\renewcommand{\cftloftitlefont}{\hfill\normalsize\rm}
+\renewcommand{\cftafterloftitle}{\hfill}
+
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                        \refstepcounter{chapter}%
+                        \typeout{\@chapapp\space\thechapter.}%
+                        \addcontentsline{toc}{chapter}%
+                        {\protect\numberline{\thechapter}#1}%
+                    \else
+                        \addcontentsline{toc}{chapter}{#1} %
+                    \fi
+                    \chaptermark{#1}%
+
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+
+%
+% Change some of the rules for float placement.
+%
+\setcounter{topnumber}{2}          %Maximum 2 floats on top
+\setcounter{bottomnumber}{1}       %Maximum 1 float on bottom
+%\renewcommand{\topfraction}{0.7}    %Top float max size is 70%
+%\renewcommand{\bottomfraction}{0.7} %Bottom float max size is 70%
+\renewcommand{\topfraction}{0.9}    %Top float max size is 70%
+\renewcommand{\bottomfraction}{0.8} %Bottom float max size is 70%
+\renewcommand{\floatpagefraction}{0.7}
+
+%
+% List of Symbols and Abbreviations
+%
+\newcommand\listsymbolname{List of Symbols/Abbreviations}
+\usepackage{longtable}
+\newcommand\listofsymbols[2]{
+\begin{center}{\MakeUppercase\listsymbolname}\end{center} \\
+\begin{longtable}[c]{#1}#2\end{longtable}\par
+\cleardoublepage
+}
+
+\renewcommand{\@makechapterhead}[1]{
+\begin{center}
+\thechapter\vspace{\baselineskip}.
+\uppercase\expandafter{#1}\vspace{\baselineskip}
+\end{center}
+}
+% Numbers chapters, sections, and subsections
+\setcounter{secnumdepth}{2}
+% Center section titles
+\renewcommand{\section}{\@startsection{section}{1}{0 in}{1em}{1em}{\centering}}
+% Center and italicize subsection titles
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0 in}{1em}{1em}
+{\centering\slshape}}
+
+%
+% Fix bibliography header.
+%
+\renewcommand\bibname{References}
+\renewcommand\bibsection{
+\begin{center}\uppercase\expandafter{\bibname}\vspace{1em}\end{center}
+}
+
+%
+% Modify figure captions so that they print singlespace.
+%
+\renewcommand{\@makecaption}[2]{% #1 is e.g. Figure 1, #2 is captiontext
+  \singlespace
+  {\textbf{#1:} #2\par}
+}
+
+%
+% Modify footnotes to be single spaced per footnote, double in between
+%
+
+\setlength{\footnotesep}{\baselineskip} %double space between footnotes
+
+\let\oldfootnoterule\footnoterule %don't put a gap between the line and the first footnote
+\def\footnoterule{\oldfootnoterule\vspace{-0.2\baselineskip}}
+
+\let\oldfn\footnote   %single space individual footnotes
+\renewcommand{\footnote}[1]{\singlespace\oldfn{#1}\doublespace}
